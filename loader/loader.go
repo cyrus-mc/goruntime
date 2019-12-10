@@ -204,6 +204,7 @@ func New2(runtimePath, runtimeSubdirectory string, scope stats.Scope, refresher 
 			case ev := <-watcher.Events:
 				logger.Debugf("Got event %s", ev)
 				if refresher.ShouldRefresh(ev.Name, getFileSystemOp(ev)) {
+					logger.Debugf("HERE")
 					newLoader.onRuntimeChanged()
 				}
 			case err := <-watcher.Errors:
